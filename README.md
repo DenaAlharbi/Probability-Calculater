@@ -1,5 +1,8 @@
 # Probability-Calculater
 ![image](https://github.com/DenaAlharbi/Probability-Calculater/assets/109204661/6f480c84-c3a1-4fdc-8bac-edce957ee9b0)
+
+
+
 Goal: “Create a lottery ball, or Hat, that takes a variable number of arguments that specify the number of balls of each color that are in the hat. Give the object the ability to pick a random number of balls from the hat, which will then be used to compute the probability of picking a certain distribution of balls over a large number of experiments”
 
 Considerations: this project resides at the intersection of probability and class creation. Using a Class object as an input to model a probabilistic output should allow for neat understanding of how python classes can be used iteratively to estimate event probabilities. The project also introduces the idea of creating classes ready to handle a dynamic number of input arguments.
