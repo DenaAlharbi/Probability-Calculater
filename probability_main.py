@@ -23,55 +23,63 @@ class Object:
     # infile.close()
 
 
+def Validate(x):
+    if x.isspace():
+        return False
+    if x.isdigit():
+        return False
+    if not (x == "yes" or x == "no"):
+        return False
+    return True
+
+
 class Inputs:
 
+    def __init__(self):
+        self.num_balls_take = None
+        self.green_user = None
+        self.blue_user = None
+        self.red_user = None
+        self.num_balls_col = None
+        self.total_of_balls = None
+
     def specificColorNum(self):
-        global red_user # one color only
         one_specific_color = input(
             "What is the color you want to find the probability of?\n 'red' or 'blue' or 'green':")
         if one_specific_color == "red":
-            return red()
+            return self.red_user
         if one_specific_color == "blue":
-            return blue()
+            return self.red_user
         if one_specific_color == "green":
-            return green()
+            return self.green_user
 
     def numToCalculate(self):
-        num_balls_col = input("How many balls of that color do you want to take out?")
-        return num_balls_col
-
-    def Validate(self,x):
-        if x.isspace():
-            return False
-        if x.isdigit():
-            return False
-        if not (x == "yes" or x == "no"):
-            return False
-        return True
+        self.num_balls_col = input("How many balls of that color do you want to take out?")
+        return self.num_balls_col
 
     def red(self):
-        red_user = input("How many red balls are there in your imaginary hat? ")
-        red_user = int(red_user)
-        return red_user
+        self.red_user = input("How many red balls are there in your imaginary hat? ")
+        self.red_user = int(self.red_user)
+        return self.red_user
 
     def blue(self):
-        blue_user = input("How many blue balls are there in your imaginary hat? ")
-        blue_user = int(blue_user)
-        return blue_user
+        self.blue_user = input("How many blue balls are there in your imaginary hat? ")
+        self.blue_user = int(self.blue_user)
+        return self.blue_user
 
     def green(self):
-        green_user = input("How many green balls are there in your imaginary hat? ")
-        green_user = int(green_user)
-        return green_user
+        self.green_user = input("How many green balls are there in your imaginary hat? ")
+        self.green_user = int(self.green_user)
+        return self.green_user
 
     def numOfBallsTake(self):  # That the user is going to take out
-        num_balls_take = input("How many balls do you want to take out? ")
-        num_balls_take = int(num_balls_take)
-        return num_balls_take
+        self.num_balls_take = input("How many balls do you want to take out? ")
+        self.num_balls_take = int(self.num_balls_take)
+        return self.num_balls_take
 
-    def total(self,col_red, col_blue, col_green):
-        total_of_balls = col_red + col_blue + col_green
-        return total_of_balls
+    def total(self, col_red, col_blue, col_green):
+        self.total_of_balls = col_red + col_blue + col_green
+        return self.total_of_balls
 
 
 def main():
@@ -79,15 +87,14 @@ def main():
     objectB = Object
     firstInput = input("Do you want to play the probability game? 'yes' or 'no': ")
     while firstInput != "":
-        if objectA.Validate(firstInput):
-            objectB.oneColor(objectA.total(objectA.red(), objectA.blue(), objectA.green()), objectA.numOfBallsTake(), specificColorNum(), numToCalculate())
+        if Validate(firstInput):
+            objectB.oneColor(objectA.total(objectA.red(), objectA.blue(), objectA.green()), objectA.numOfBallsTake(),
+                             objectA.specificColorNum(), objectA.numToCalculate())
 
         elif firstInput == "":
             print("The program will stop now...")
             break
         firstInput = input("Do you want to play the probability game? 'yes' or 'no': ")
 
-
-pass
 
 main()
